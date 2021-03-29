@@ -25,7 +25,7 @@
 
 ### 소프트웨어
 * OS : Mac OS BigSur
-* 개발 스택 : Tkinter
+* 개발 스택 : Tkinter (블로그, 유투브에 정보가 많음)
 * 개발 프로그램 : PyCharm 
 * 개발 언어 : [Python v3.8.2]
 
@@ -37,20 +37,18 @@
     tst_var = 13
 
     # 클래스명
-    class TestClass:
+    class tst_class:
         def __init__(self):
             # 프로퍼티명
             self.tstProperty = 41
 
         # 메소드명
-        def TestMethod(self):
+        def tst_method(self):
             print(self.tstProperty)
     
     if __name__ == "__main__":
-        tst_var = TestClass(43)
-        tst_var.TestMethod()
+        tst_var = tst_class(43)
+        tst_var.tst_method()
 ```
-1. 변수명은 간략히
-2. 클래스, 메소드명은 명확하게
 
   
