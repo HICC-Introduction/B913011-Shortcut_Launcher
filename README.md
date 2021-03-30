@@ -25,9 +25,9 @@
 
 ### 소프트웨어
 * OS : Mac OS BigSur
-* 개발 스택 : Tkinter (블로그, 유투브에 정보가 많음)
-* 개발 프로그램 : PyCharm 
-* 개발 언어 : [Python v3.8.2]
+* 개발 스택 : PyQt5 (tkinter가 내 맥에서 살짝 이상함..ㅠ )
+* 개발 프로그램 : VScode 
+* 개발 언어 : [Python v3.9.2]
 
 ### 코드룰
 * 예시 프로그램
