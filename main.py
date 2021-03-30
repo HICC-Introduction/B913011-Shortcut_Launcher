@@ -19,7 +19,8 @@ def opn_c():
 
 def opn_google():
     webbrowser.open("https://www.google.co.kr/")
-"""    
+    
+"""
 def btn_5():
     
 def btn_6():
@@ -27,8 +28,8 @@ def btn_6():
 def btn_7():
     
 def btn_8():
-    
 """
+
 def btn_exit():
     win.destroy
     exit()
@@ -63,3 +64,5 @@ exitbtn.pack()
 
 
 win.mainloop()
+
+
