@@ -1,68 +1,76 @@
-# B913011 Shortcut_Launcher
-import tkinter as tk
-import os
+import sys
+from PyQt5.QtWidgets import *
+from PyQt5.QtWidgets import QApplication, QWidget, QPushButton
+from PyQt5.QtCore import QCoreApplication
 import webbrowser
-
-win = tk.Tk()   
-win.title("KMS - Shortcut Launcher")   
-win.geometry("800x200+100+100")
-win.resizable(False, False)
-
-def opn_note():
-    os.system("notepad.exe")
-
-def opn_calc():
-    os.system("calc.exe")
-
-def opn_c():
-    os.startfile("c:")
-
-def opn_google():
-    webbrowser.open("https://www.google.co.kr/")
-    
-"""
-def btn_5():
-    
-def btn_6():
-    
-def btn_7():
-    
-def btn_8():
-"""
-
-def btn_exit():
-    win.destroy
-    exit()
+import os
 
 
-btn1 = tk.Button(win, text="NOTEPAD", command=opn_note, width=15, height=4)   
-btn1.place(x=70, y=30)
+class Win(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.setFixedSize(800, 200)   
+        self.setWindowTitle("KMS - Shortcut Launcher")
 
-btn2 = tk.Button(win, text="CALCULATOR", command=opn_calc, width=15, height=4)   
-btn2.place(x=250, y=30)
+        self.btn_quit = QPushButton('Quit', self)
+        self.btn_quit.move(690, 20)
+        self.btn_quit.resize(100,165)
+        self.btn_quit.clicked.connect(QCoreApplication.instance().quit)
 
-btn3 = tk.Button(win, text="C:", command=opn_c, width=15, height=4)   
-btn3.place(x=430, y=30)
+        self.btn_note = QPushButton("NOTEPAD", self)
+        self.btn_note.move(20, 20)
+        self.btn_note.resize(150, 80)
+        self.btn_note.clicked.connect(self.opn_note)
 
-btn4 = tk.Button(win, text="GOOGLE", command=opn_google, width=15, height=4)   
-btn4.place(x=610, y=30)
+        self.btn_calc = QPushButton("CALC", self)
+        self.btn_calc.move(190, 20)
+        self.btn_calc.resize(150, 80)
+        self.btn_calc.clicked.connect(self.opn_calc)
 
-btn5 = tk.Button(win, text="BUTTON5", width=15, height=4)   
-btn5.place(x=70, y=110)
+        self.btn_cfold = QPushButton("C:", self)
+        self.btn_cfold.move(360, 20)
+        self.btn_cfold.resize(150, 80)
+        self.btn_cfold.clicked.connect(self.opn_cfold)
 
-btn6 = tk.Button(win, text="BUTTON6", width=15, height=4)   
-btn6.place(x=250, y=110)
+        self.btn_google = QPushButton("GOOGLE", self)
+        self.btn_google.move(530, 20)
+        self.btn_google.resize(150, 80)
+        self.btn_google.clicked.connect(self.opn_google)
 
-btn7 = tk.Button(win, text="BUTTON7", width=15, height=4)   
-btn7.place(x=430, y=110)
+        self.btn_5 = QPushButton("Button 5", self)
+        self.btn_5.move(20, 105)
+        self.btn_5.resize(150, 80)
+        #self.btn_5.clicked.connect(self.opn_note)
 
-btn8 = tk.Button(win, text="BUTTON8", width=15, height=4)   
-btn8.place(x=610, y=110)
+        self.btn_6 = QPushButton("Button 6", self)
+        self.btn_6.move(190, 105)
+        self.btn_6.resize(150, 80)
+        #self.btn_6.clicked.connect(self.opn_note)
 
-exitbtn = tk.Button(win, text="Exit", command=btn_exit, width=10)
-exitbtn.pack()
+        self.btn_7 = QPushButton("Button 7", self)
+        self.btn_7.move(360, 105)
+        self.btn_7.resize(150, 80)
+        #self.btn_7.clicked.connect(self.opn_note)
+
+        self.btn_8 = QPushButton("Button 8", self)
+        self.btn_8.move(530, 105)
+        self.btn_8.resize(150, 80)
+        #self.btn_8.clicked.connect(self.opn_note)
+
+    def opn_note():
+        os.system("notepad.exe")
+
+    def opn_calc():
+        os.system("calc.exe")
+
+    def opn_cfold():
+        os.startfile("c:")
+
+    def opn_google(self):
+        webbrowser.open("http://www.google.co.kr/")
 
 
-win.mainloop()
-
-
+app = QApplication(sys.argv)
+win = Win()
+win.show()
+app.exec_()
