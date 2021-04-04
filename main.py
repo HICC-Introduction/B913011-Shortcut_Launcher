@@ -5,8 +5,21 @@ from PyQt5.QtGui import *
 import webbrowser
 import os
 
-btn_name = [["NOTEPAD", "CALCULATOR", "TERMINAL", "GOOGLE"], ["5", "6", "7", "8"]]
-btn_icon = ["note.png", "calc.png", "terminal.png", "google.png"]
+def opn_note(): # 메모장 실행 함수
+        os.system("notepad.exe")
+
+def opn_calc(): # 계산기 실행 함수
+        os.system("calc.exe")
+
+def opn_cfold(): # c: 폴더 여는 함수
+        os.startfile("c:")
+
+def opn_google(): # 웹브라우져로 google을 여는 함수
+        webbrowser.open("http://www.google.co.kr/")
+
+btn_name = [["NOTEPAD", "CALCULATOR", "C:", "GOOGLE"], ["5", "6", "7", "8"]] # 버튼 이름 저장
+btn_icon = ["note.png", "calc.png", "cfold.png", "google.png"] # 버튼 아이콘 이름 저장
+btn_func = [opn_note, opn_calc, opn_cfold, opn_google] # 버튼 함수 이름 저장
 
 class Win(QWidget):
     def __init__(self):
@@ -23,29 +36,10 @@ class Win(QWidget):
                 btn = QPushButton(btn_name[x][y]) # 버튼의 이름을 2x4의 배열에 저장해둠
                 btn.setMaximumHeight(100)   # 창의 크기에 맞게 최대 100의 높이를 가지게 설정
                 grid_layout.addWidget(btn, row, col)    # 버튼은 그리드를 따라 2x4의 형태를 가짐
-                if x == 0:  # 1행에 있는 버튼들만 열에따라 아이콘을 넣도록 배열에 .png파일 이름 저장
-                    btn.setIcon(QIcon(btn_icon[y]))
-                    if y == 0:  # 1행에 있는 버튼들 열에 따라 각각 클릭되었을때 이벤트를 연결해둠
-                        btn.clicked.connect(self.opn_note)
-                    elif y == 1:
-                        btn.clicked.connect(self.opn_calc)
-                    elif y == 2:
-                        btn.clicked.connect(self.opn_terminal)
-                    else:
-                        btn.clicked.connect(self.opn_google)
-        
-    def opn_note(self): # Mac os에서 메모를 여는 경로
-        os.system("/System/Applications/Notes.app/Contents/MacOS/Notes")
-
-    def opn_calc(self): # Mac os에서 계산기를 여는 경로
-        os.system("/System/Applications/Calculator.app/Contents/MacOS/Calculator")
-
-    def opn_terminal(self): # Mac os에서 폴더역할인 디렉토리는 열수 없음 터미널로 대체
-        os.system("/System/Applications/Utilities/Terminal.app/Contents/MacOS/Terminal")
-
-    def opn_google(self): # 웹브라우져로 google을 여는 함수
-        webbrowser.open("http://www.google.co.kr/")
-
+                if x == 0:  # 1행에 있는 버튼들만 해당
+                    btn.setIcon(QIcon(btn_icon[y])) # 열에 따라 아이콘을 넣도록 배열에 .png파일 이름 저장
+                    btn.clicked.connect(btn_func[y]) # 열에 따라 각각 클릭되었을때 이벤트를 배열에 이름 저장
+                    
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     win = Win()
